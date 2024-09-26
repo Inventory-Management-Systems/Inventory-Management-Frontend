@@ -1,0 +1,160 @@
+.profile_div_box {
+  min-height: 150px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.profile_div_box2 {
+  margin: auto;
+  padding: auto;
+  align-items: center;
+  justify-content: left;
+  width: 93%;
+  color: white;
+  margin-top: -60px;
+}
+
+.left_part {
+  display: flexbox;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.profile-photo {
+  height: 300px;
+  width: 300px;
+  margin-top: 20px;
+  background-color: lightgray;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile_heading {
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+.profile-details {
+  overflow: auto;
+}
+
+.profile-details p {
+  color: #333;
+  padding: 15px;
+  margin: 0;
+  font-size: large;
+  /* font-weight: bold; */
+}
+
+.profile_box {
+  border-top: #ccc solid 2px;
+  border-left: #ccc solid 2px;
+  border-right: #ccc solid 2px;
+
+  display: flex;
+}
+
+.profile_box2 {
+  border-bottom: #ccc solid 2px;
+}
+
+.info_text {
+  font-weight: bold;
+  width: 50%;
+  /* padding-left: 230px!important; */
+}
+
+.info_content {
+  width: 50%;
+  margin-left: auto;
+}
+
+.vl {
+  border-left: 3px solid #ccc;
+  height: 380px;
+  margin-left: 30px;
+}
+
+.profile_table_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-height: 33vh;
+  /* height: auto; */
+  overflow: auto;
+  outline: 1px solid #ccc;
+}
+
+.profile_table {
+  overflow: hidden;
+  table-layout: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: auto;
+  margin-bottom: 0 !important;
+  border-left: #222 solid 1px;
+  border-right: #222 solid 1px;
+  border-bottom: #222 solid 1px;
+}
+
+.profile_table thead {
+  background-color: #ccc !important;
+  color: #222;
+  top: 0;
+  position: sticky;
+}
+
+.profile_table th,
+.profile_table td {
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.profile_table tbody tr:hover {
+  background-color: #eee;
+}
+
+@media only screen and (max-width: 767px) {
+  .profile-photo {
+    margin-top: -100px !important;
+    border: white solid 10px;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+    background-color: lightgray;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 950px) {
+  .profile-photo {
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+    background-color: lightgray;
+  }
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1111px) {
+  .profile-photo {
+    height: 250px;
+    width: 250px;
+    margin-top: 20px;
+    background-color: lightgray;
+  }
+}

@@ -1,0 +1,127 @@
+.emp_div_box {
+  min-height: 150px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.emp_div_box2 {
+  margin: auto;
+  padding: auto;
+  align-items: center;
+  justify-content: left;
+  height: 680px;
+  /* height: auto; */
+  width: 93%;
+  color: white;
+  margin-top: -60px;
+}
+
+.modal_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: xx-large !important;
+  font-weight: bold !important;
+}
+
+.table-responsive {
+  overflow: auto;
+  max-height: 550px; 
+}
+
+
+.heading {
+  width: fit-content;
+  color: black;
+  font-size: 40px;
+  margin-top: 30px !important;
+  margin-left: 10px;
+}
+
+.tablediv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+  overflow: auto;
+}
+
+.table {
+  overflow: hidden;
+  table-layout: auto;
+  border-collapse: collapse;
+  box-shadow: 0px 10px 10px #ccc;
+  border-radius: 10px;
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: auto;
+}
+
+.table thead {
+  background-color: #ccc;
+  color: #222;
+  top: 0;
+  position: sticky;
+}
+
+.table th,
+.table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table tbody tr:hover {
+  background-color: #eee;
+}
+
+.actions {
+  margin-left: 10px !important;
+}
+
+.popup_form {
+  padding: 15px;
+}
+
+/* Media Queries for Responsive Design */
+
+@media only screen and (max-width: 767px) {
+  .heading_div {
+    margin-top: 7px !important;
+    width: 30% !important;
+  }
+
+  .btn_div {
+    width: 70% !important;
+  }
+
+  .heading {
+    font-size: 30px;
+    margin-left: 0!important;
+  }
+
+  .top_div {
+    display: flex;
+  }
+
+  .table {
+    max-width: 100%;
+  }
+
+  .table-responsive {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  .table-responsive {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

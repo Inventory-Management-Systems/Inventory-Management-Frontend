@@ -1,0 +1,124 @@
+.dashboard_div_box {
+  min-height: 150px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.dashboard_div_box2 {
+  margin: auto;
+  padding: auto;
+  align-items: center;
+  justify-content: left;
+  min-height: 680px;
+  height: auto;
+  width: 93%;
+  color: white;
+  margin-top: -60px;
+}
+
+.dashboard_heading {
+  width: fit-content;
+  color: black;
+  font-size: 40px;
+}
+
+.valuess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.valuess .value-box {
+  padding: 16px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fc466e;
+  background-color: black;
+}
+
+.valuess .value-box .i {
+  font-size: 25px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  margin-right: 15px;
+}
+
+.valuess .value-box h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.valuess .value-box span {
+  font-size: 15px;
+  color: #030a19;
+}
+
+.dashboard_table_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-height: 65vh;
+  height: auto;
+  overflow: auto;
+}
+
+.dashboard_table {
+  overflow: hidden;
+  table-layout: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 0 !important;
+  outline: 1px solid #ccc;
+}
+
+.dashboard_table thead {
+  /* background-color: #ccc !important; */
+  /* background-color: black !important; */
+  /* color: #222; */
+  /* color: white !important; */
+  /* color: black !important; */
+  top: 0;
+  position: sticky;
+}
+
+.dashboard_table thead {
+  /* color: #eee !important; */
+  /* color: black !important; */
+}
+
+.dashboard_table th,
+.dashboard_table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard_table td {
+  color: black !important;
+  /* color: white !important; */
+  font-weight: 600;
+  background-color: #9fa0a3 !important;
+  /* background-color: #1b1d1a !important; */
+  /* background-color: white !important; */
+}
+
+.dashboard_table tbody tr:hover {
+  background-color: #eee;
+}
+
+@media (max-width: 768px) {
+  .valuess .value-box {
+    width: 80%;
+  }
+}
+

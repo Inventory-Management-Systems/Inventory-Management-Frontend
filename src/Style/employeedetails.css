@@ -1,0 +1,131 @@
+.emp_detail_div_box {
+  min-height: 150px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.emp_detail_div_box2 {
+  margin: auto;
+  padding: auto;
+  align-items: center;
+  justify-content: left;
+  width: 93%;
+  color: white;
+  margin-top: -60px;
+}
+
+.empd-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empd-photo {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin-top: -50px;
+  border: 10px solid white;
+  background-color: lightgray;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.empd_heading {
+  font-weight: 500 !important;
+  text-align: center !important;
+  margin-right: 10px;
+}
+
+.empd-details {
+  overflow: auto;
+}
+
+.empd-details p {
+  color: #333;
+  padding: 15px;
+  margin: 0;
+  font-size: large;
+}
+
+.empd_box {
+  border-top: #ccc solid 1px;
+  border-left: #ccc solid 1px;
+  border-right: #ccc solid 1px;
+  display: flex;
+}
+
+.empd_box2 {
+  border-bottom: #ccc solid 1px;
+}
+
+.info_text {
+  font-weight: bold;
+  width: 50%;
+}
+
+.info_content {
+  width: 50%;
+  margin-left: auto;
+  overflow: auto;
+}
+
+.vl {
+  border-left: 3px solid #ccc;
+  height: 380px;
+  margin-left: 30px;
+}
+
+.empd_table_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-height: 45vh;
+  height: auto;
+  overflow: auto;
+  outline: 1px solid #ccc;
+}
+
+.empd_table {
+  overflow: hidden;
+  table-layout: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: auto;
+  margin-bottom: 0 !important;
+  border-left: #222 solid 1px;
+  border-right: #222 solid 1px;
+  border-bottom: #222 solid 1px;
+}
+
+.empd_table thead {
+  background-color: #ccc !important;
+  color: #222;
+  top: 0;
+  position: sticky;
+}
+
+.empd_table th,
+.empd_table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empd_table tbody tr:hover {
+  background-color: #eee;
+}
+
+.check_box {
+  width: 10%;
+}
