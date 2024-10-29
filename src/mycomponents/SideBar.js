@@ -74,19 +74,15 @@ const SideBar = ({ children }) => {
             <div style={{ width: isOpen ? '250px' : '50px' }} className='sidebar bg-light shadow-lg'>
                 <div className='top_section'>
                     <h1 style={{ display: isOpen ? 'block' : 'none' }} className='logo'>
-                        <span style={{ fontSize: '29px', fontFamily: 'arial black', color: '#5e17f0' }}>I</span>
-                        <span style={{ fontSize: '29px', fontFamily: 'arial black', color: '#fc466e' }}>M</span>
-                        <span style={{ fontSize: '29px', fontFamily: 'arial black', color: '#0cbee2' }}>S</span>
+                        <span style={{ fontSize: '40px', fontFamily: 'arial black', color: '#5e17f0' }}>I</span>
+                        <span style={{ fontSize: '40px', fontFamily: 'arial black', color: '#fc466e' }}>M</span>
+                        <span style={{ fontSize: '40px', fontFamily: 'arial black', color: '#0cbee2' }}>S</span>
                     </h1>
-                    <div style={{ marginLeft: isOpen ? '100px' : '-15px', marginBottom: isOpen ? '10px' : '-40px' }} className='bars text-dark'>
+                    <div style={{ marginLeft: isOpen ? '100px' : '-15px' }} className='bars text-dark'>
                         <FaBars onClick={toggle} />
                     </div>
                 </div>
-                <br />
-                <div className='type text-dark text-left mx-4' style={{ display: isOpen ? 'block' : 'none' }}>
-                    {userType !== "admin" ? "Employee" : "Admin"}
-                </div>
-                <hr className='text-dark line' />
+                <hr className='text-dark line' style={{ margin: "0px" }} />
                 {filteredMenuItems.map((item, index) => (
                     <NavLink to={item.path} key={index} className='link' activeclassname='active'>
                         <div className='icon'>{item.icon}</div>
