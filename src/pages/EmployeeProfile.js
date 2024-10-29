@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FaPowerOff } from 'react-icons/fa';
 import '../Style/employeeprofile.css';
 import userImage from "../images/user.png"
@@ -7,7 +7,7 @@ import { getEmployeeAssignItemNames } from '../Services/AssignmentService';
 import { toast } from 'react-toastify';
 
 const Profile = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
   const navigate = useNavigate();
   const [assignedItems, setAssignedItems] = useState([]);
 
@@ -28,7 +28,7 @@ const Profile = () => {
         console.log(error);
         toast.error('Something went wrong');
       });
-  }, []);
+  }, [navigate, user]);
 
 
   return (
