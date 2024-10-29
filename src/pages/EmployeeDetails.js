@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { FaPowerOff } from "react-icons/fa";
 import "../Style/employeedetails.css";
 import userImage from "../images/user.png";
@@ -20,7 +20,7 @@ const EmployeeDetails = () => {
   const employee = location.state?.employee || {};
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
   const [assignedItems, setAssignedItems] = useState([]);
   const [unassignedItems, setUnassignedItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -52,7 +52,7 @@ const EmployeeDetails = () => {
         console.log(error);
         toast.error("Something went wrong");
       });
-  }, [employee]);
+  }, [employee, user, navigate]);
 
   const handleCheckboxChange = (event, item) => {
     event.preventDefault();
