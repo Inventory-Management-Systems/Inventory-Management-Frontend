@@ -1,69 +1,40 @@
-import React from "react";
-import "../Style/dashboard.css";
+import React, { useMemo } from "react";
+import "../Style/employeeDashboard.css";
 import { useEffect, useState } from "react";
-import { FaPowerOff, FaUsers, FaShoppingCart } from "react-icons/fa";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { FaPowerOff, FaExchangeAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { getEmployeeAssignItems, getEmployeeAssignItemCount } from '../Services/AssignmentService';
 import { toast } from 'react-toastify';
-import { getEmployeesCount, getAdminCount } from '../Services/UserService';
-import { getItemCount } from '../Services/ItemService';
-import { getEmployeesAndItems } from '../Services/AssignmentService';
-import { useMemo } from "react";
-
 
 const Dashboard = () => {
-  const navigate = useNavigate();
   const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
-  const [employeCount, setEmployeCount] = useState([]);
-  const [adminCount, setAdminCount] = useState([]);
-  const [itemCount, setItemCount] = useState([]);
-  const [employeeAssignItems, setEmployeeAssignItems] = useState([]);
-
+  const navigate = useNavigate();
+  const [assignedItems, setAssignedItems] = useState([]);
+  const [assignmentCount, setAssignedItemsCount] = useState([]);
 
   useEffect(() => {
     document.title = "IMS || Dashboard";
 
-    //if role is employee then redirect to employee_dashboard page
-    if (user && user.role === "employee") {
-      toast.warn("You can't access Admin Dashboard page");
-      navigate("/user/employee_dashboard");
+    //if role is admin then redirect to dashboard page
+    if (user && user.role === "admin") {
+      toast.warn("You can't access Employee Dashboard page");
+      navigate("/user/dashboard");
     }
 
-    getEmployeesCount()
+    getEmployeeAssignItems(user.id)
       .then((response) => {
-        setEmployeCount(response);
+        setAssignedItems(response);
       })
       .catch((error) => {
         console.log(error);
         toast.error('Something went wrong');
       });
 
-    getAdminCount()
+    getEmployeeAssignItemCount(user.id)
       .then((response) => {
         if (response > 0) {
-          setAdminCount(response);
-        } else {
-          toast.error('No admin exist');
+          setAssignedItemsCount(response);
         }
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error('Something went wrong');
-      });
-
-    getItemCount()
-      .then((response) => {
-        setItemCount(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error('Something went wrong');
-      });
-
-
-    getEmployeesAndItems()
-      .then((response) => {
-        setEmployeeAssignItems(response);
       })
       .catch((error) => {
         console.log(error);
@@ -71,9 +42,10 @@ const Dashboard = () => {
       });
   }, [navigate, user]);
 
+
   return (
     <div>
-      <div className="bg-info dashboard_div_box p-5">
+      <div className="bg-info emp_dashboard_div_box p-5">
         <input
           type="button"
           id="logout"
@@ -86,48 +58,48 @@ const Dashboard = () => {
         }} />
       </div>
 
-      <div className="bg-white dashboard_div_box2 center-box shadow-lg p-3 mb-5">
-        <span className="dashboard_heading fw-bold px-4">Dashboard</span>
-        <div className="valuess my-4 row">
-          <div className="value-box m-3 col-md-3">
-            <FaUsers className="i" />
+      <div className="bg-white emp_dashboard_div_box2 center-box shadow-lg p-3 mb-5">
+        <p className="emp_dashboard_heading fw-bold px-4">Dashboard</p>
+        <div className="values my-4">
+          <div className="value-box m-3">
+            <FaExchangeAlt className="ed_i p-2" />
             <div>
-              <h3>{employeCount}</h3>
-              <span className="text-white">Total Employees</span>
-            </div>
-          </div>
-          <div className="value-box m-3 col-md-3 bg-succes">
-            <FaShoppingCart className="i p-2" />
-            <div>
-              <h3>{itemCount}</h3>
-              <span className="text-white">Total Items</span>
-            </div>
-          </div>
-          <div className="value-box m-3 col-md-3 bg-succes">
-            <MdAdminPanelSettings className="i" />
-            <div>
-              <h3>{adminCount}</h3>
-              <span className="text-white">Total Admins</span>
+              <h3>{assignmentCount}</h3>
+              <span className="text-white ">Total Assign Items</span>
             </div>
           </div>
         </div>
-        <div className="my-3 dashboard_table_div">
-          <table className="table dashboard_table">
+        <div className="my-3 emp_dashboard_table_div">
+          <table className="table emp_dashboard_table">
             <thead>
               <tr>
-                <th>S No.</th>
-                <th>Employees</th>
                 <th>Assign Items</th>
+                <th>Category</th>
+                <th>Serial Number</th>
+                <th>Bill Number</th>
+                <th>Warranty</th>
               </tr>
             </thead>
             <tbody>
-              {employeeAssignItems.map((employeeAssignItem, index) => (
-                <tr key={index}>
-                  <td className="item_list">{index + 1}</td>
-                  <td className="item_list">{employeeAssignItem.employeeName}</td>
-                  <td className="item_list">{employeeAssignItem.itemName}</td>
+              {assignedItems.length > 0 ? (
+                assignedItems.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.category}</td>
+                    <td>{item.serialNumber}</td>
+                    <td>{item.billNumber}</td>
+                    <td>{item.warranty}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td>Null</td>
+                  <td>Null</td>
+                  <td>Null</td>
+                  <td>Null</td>
+                  <td>Null</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
