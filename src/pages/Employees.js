@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import '../Style/employee.css';
 import { Modal } from 'react-bootstrap';
 import { FaPowerOff, FaTrashAlt, FaPen } from 'react-icons/fa';
@@ -14,7 +14,7 @@ const Employees = () => {
     const navigate = useNavigate();
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState({});
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
 
     const handleClick = (employee) => {
         Swal.fire({
@@ -130,7 +130,7 @@ const Employees = () => {
                 console.log(error);
                 toast.error('Something went wrong');
             });
-    }, []);
+    }, [navigate, user]);
 
 
     const handleInputChange = (event) => {
