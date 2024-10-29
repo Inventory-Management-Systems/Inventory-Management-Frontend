@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "../Style/employeeDashboard.css";
 import { useEffect, useState } from "react";
 import { FaPowerOff, FaExchangeAlt } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { getEmployeeAssignItems, getEmployeeAssignItemCount } from '../Services/
 import { toast } from 'react-toastify';
 
 const Dashboard = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
   const navigate = useNavigate();
   const [assignedItems, setAssignedItems] = useState([]);
   const [assignmentCount, setAssignedItemsCount] = useState([]);
@@ -40,7 +40,7 @@ const Dashboard = () => {
         console.log(error);
         toast.error('Something went wrong');
       });
-  }, []);
+  }, [navigate, user]);
 
 
   return (
