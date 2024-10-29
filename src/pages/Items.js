@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "../Style/item.css";
 import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
@@ -19,7 +19,7 @@ const Items = () => {
   const [modal2, setModal2] = useState(false);
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState({});
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
 
   const handleClick = (item) => {
     Swal.fire({
@@ -120,7 +120,7 @@ const Items = () => {
         console.log(error);
         toast.error("Something went wrong");
       });
-  }, []);
+  }, [navigate, user]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

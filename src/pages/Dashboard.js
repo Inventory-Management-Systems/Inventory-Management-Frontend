@@ -8,11 +8,12 @@ import { toast } from 'react-toastify';
 import { getEmployeesCount, getAdminCount } from '../Services/UserService';
 import { getItemCount } from '../Services/ItemService';
 import { getEmployeesAndItems } from '../Services/AssignmentService';
+import { useMemo } from "react";
 
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = useMemo(() => JSON.parse(localStorage.getItem('user')), []);
   const [employeCount, setEmployeCount] = useState([]);
   const [adminCount, setAdminCount] = useState([]);
   const [itemCount, setItemCount] = useState([]);
@@ -68,7 +69,7 @@ const Dashboard = () => {
         console.log(error);
         toast.error('Something went wrong');
       });
-  }, []);
+  }, [navigate, user]);
 
   return (
     <div>

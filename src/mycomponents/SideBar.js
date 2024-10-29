@@ -67,7 +67,7 @@ const SideBar = ({ children }) => {
         else {
             navigate("/login");
         }
-    }, []);
+    }, [navigate]);
 
     return (
         <div className='container-fluid'>
