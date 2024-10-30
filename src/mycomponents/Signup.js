@@ -9,8 +9,6 @@ import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [role, setrole] = useState("employee");
-  const [secretKey, setSecretKey] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [fname, setFname] = useState("");
@@ -23,7 +21,7 @@ const Signup = () => {
 
   useEffect(() => {
     document.title = "IMS || Registration";
-  }, [formData, role]);
+  }, [formData]);
 
   const handleConfirmPasswordChange = (e) => {
     const confirmPasswordValue = e.target.value;
@@ -95,12 +93,6 @@ const Signup = () => {
       isValid = false;
     }
 
-    //to check if user is admin then secret key is valid
-    if (role === "admin" && secretKey !== "M@$ter123") {
-      displayError("Invalid Secret Key");
-      return;
-    }
-
     //if all validation is returns true then signUp service will be called
     if (isValid) {
       const formData = {
@@ -111,8 +103,7 @@ const Signup = () => {
         age: age,
         dob: dob,
         password: password,
-        role: role,
-        secretKey: secretKey,
+        role: "employee",
       };
 
       setFormData(formData);
@@ -130,7 +121,6 @@ const Signup = () => {
           console.log(error);
           displayError("Something went wrong");
         });
-
     }
   };
 
@@ -327,56 +317,6 @@ const Signup = () => {
                         {passwordError}
                       </span>
                     </div>
-                  </div>
-
-                  {/* bottom of from  */}
-                  <div className="col-md-6 flex-grow-1 radiobtn">
-                    <div className="mb-3 mt-3 text-start ">
-                      Register As?
-                      <input
-                        type="radio"
-                        name="role"
-                        value="employee"
-                        id="employee"
-                        defaultChecked
-                        onChange={(e) => setrole(e.target.value)}
-                        className="mx-2"
-                      />
-                      <label htmlFor="employee" className="bold">
-                        Employee
-                      </label>
-                      <input
-                        type="radio"
-                        name="role"
-                        value="admin"
-                        id="admin"
-                        onChange={(e) => setrole(e.target.value)}
-                        className="mx-2"
-                        required
-                      />
-                      <label htmlFor="admin" className="bold">
-                        Admin
-                      </label>
-                    </div>
-                  </div>
-                  <div className="col-md-6 flex-grow-1">
-                    {role === "admin" ? (
-                      <div className="mb-3 inputs">
-                        <label htmlFor="key" className="bold">
-                          Secret Key
-                        </label>
-                        <input
-                          type="text"
-                          name="key"
-                          id="key"
-                          placeholder="Enter secret key"
-                          className="form-control"
-                          required
-                          value={secretKey}
-                          onChange={(e) => setSecretKey(e.target.value)}
-                        />
-                      </div>
-                    ) : null}
                   </div>
                 </div>
                 <div className="d-grid">
